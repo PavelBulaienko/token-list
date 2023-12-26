@@ -21,10 +21,7 @@ const download = async (url, destinationPath) => {
 }
 
 const changeImageURL = (tokenList) => {
-    const res = {}
-    const filteredArr = Object.values(tokenList).map(token=>({...token, logoURI: `src/images/${SELECTED_CHAIN_ID}/${token?.address?.toLowerCase()}.png`}))
-    // filteredArr.forEach(token => res[token.address] = token)
-    return filteredArr
+    return Object.values(tokenList).map(token=>({...token, logoURI: `https://github.com/PavelBulaienko/token-list/blob/main/src/images/${SELECTED_CHAIN_ID}/${token?.address?.toLowerCase()}.png`}))
 }
 
 const formatZkEVM = (data) => {
@@ -234,7 +231,6 @@ const fetchData = async () => {
                 isCreatedDirectory = true
             }
         });
-        console.log(imageList)
         imageList.forEach(({url, address})=>{
             try {
                 const name = address.toLowerCase() + '.png'
